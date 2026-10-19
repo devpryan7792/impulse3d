@@ -33,7 +33,7 @@ from ball sockets, or throw 1,000 spheres at a wall.
 
 ## What's inside
 
-| | |
+| Area | What you get |
 | :--- | :--- |
 | **Collision** | Analytic sphere/box/capsule/plane paths, clipped box–box manifolds, GJK + EPA for general convex pairs, dynamic AABB tree with velocity-expanded bounds. |
 | **Solver** | Sequential impulses over a normal + two tangent rows per point, Coulomb friction, restitution, warm-started normal impulses, split-impulse position correction. |
@@ -177,7 +177,7 @@ that for throughput — 1,000 spheres, 1 substep, 4 solver iterations, shadows o
 
 Physics cost is host-dependent. The benchmark measures actual step time and
 frame rate in the browser rather than quoting a synthetic number; the checked-in
-screenshot was captured under headless software WebGL, so its frame rate is a
+captures were made under headless software WebGL, so their frame rate is a
 floor, not a target.
 
 ## Testing
