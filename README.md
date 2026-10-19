@@ -84,8 +84,19 @@ npm run test:coverage     # 100% thresholds, enforced
 npm run demo:smoke        # headless physics checks for every demo
 ```
 
-The package is not published to npm. To use it from another project, build it
-and depend on the repository (or alias `impulse3d` to `src/index.ts`).
+The package is not published to npm. To use it from another project, pack it
+and install the tarball:
+
+```bash
+# in this repository
+npm pack                       # builds dist/ and emits impulse3d-0.1.0.tgz
+
+# in your project
+npm install /path/to/impulse3d-0.1.0.tgz
+```
+
+Then import the public API as shown above. The tarball contains `dist/` (ESM +
+type declarations) and nothing else from the repository.
 
 ## Usage
 
