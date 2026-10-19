@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck core
+        run: npm run typecheck
+
+      - name: Typecheck demos
+        run: npm run typecheck:examples
+
+      - name: Test with coverage
+        run: npm run test:coverage
+
+      - name: Build library
+        run: npm run build
+
+      - name: Build demos
+        run: npm run demo:build
+
+      - name: Demo smoke test
+        run: npm run demo:smoke

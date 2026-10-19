@@ -1,0 +1,60 @@
+{
+  "name": "impulse3d",
+  "version": "0.1.0",
+  "description": "Impulse3D: zero-dependency 3D rigid body physics engine with dynamic AABB tree broadphase",
+  "type": "module",
+  "license": "MIT",
+  "author": "Pradyumn Jha",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devpryan7792/impulse3d.git"
+  },
+  "homepage": "https://github.com/devpryan7792/impulse3d#readme",
+  "bugs": {
+    "url": "https://github.com/devpryan7792/impulse3d/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "typecheck:examples": "tsc -p examples/tsconfig.json --noEmit",
+    "demo": "vite --config examples/vite.config.ts",
+    "demo:build": "vite build --config examples/vite.config.ts",
+    "demo:smoke": "vite-node --config examples/vite.config.ts examples/src/smoke.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "physics",
+    "rigid-body",
+    "3d",
+    "collision-detection",
+    "broadphase",
+    "aabb-tree"
+  ],
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "three": "^0.186.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-node": "^5.3.0",
+    "vitest": "^5.0.5"
+  }
+}
